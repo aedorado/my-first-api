@@ -1,6 +1,7 @@
+#### SAMPLE API IN NODEJS & MONGODB
+
 API built in nodejs & mongodb using express, mongoose & bodyparser.
 The app assumes mongodb is configured to use port number `27017`.
-
 
 Perform the following steps:
 
@@ -10,7 +11,8 @@ Perform the following steps:
 
 3. Using some tools such as cURL or REST API extensions for web browsers test the API mothods.
 
-The details about the API methods are as follows:
+
+#### The details about the API methods are as follows:
 
 i)
 `GET http://localhost:3000/api/request?connId=19&timeout=80`
