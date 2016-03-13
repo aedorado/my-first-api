@@ -1,5 +1,5 @@
 API built in nodejs & mongodb using express, mongoose & bodyparser.
-The app assumes mongodb is configured to use port number 27017.
+The app assumes mongodb is configured to use port number `27017`.
 
 
 Perform the following steps:
@@ -13,25 +13,25 @@ Perform the following steps:
 The details about the API methods are as follows:
 
 i)
-GET http://localhost:3000/api/request?connId=19&timeout=80
+`GET http://localhost:3000/api/request?connId=19&timeout=80`
 runs the request for timeout time and returns `{status:"OK"}` thereafter.
 If there is already a request with the given connId it return connId `{status: "Connection Id already exists."}`
 If it was killed before completion, it return `{status: "Process killed prematurely."}`
 
 ii)
-PUT http://localhost:3000/api/kill	`{connId: 179}`
+`PUT http://localhost:3000/api/kill` with payload such as `{connId: 179}`
 Kills the request with the given id and return `{status:"OK"}`
 If no such id exists, it return `{status: "Invalid connection Id"}`
 
 iii)
-GET http://localhost:3000/api/serverStatus
+`GET http://localhost:3000/api/serverStatus`
 Returns the id and the time until timeout of all requests which have not timedout yet in the josn format as:
 
-[{
+`[{
 	"id": 1,
 	"timeleft": 356
 }, {
 	"id": 4, 
 	"timeleft": 375
-}]
+}]`
 
