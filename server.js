@@ -27,8 +27,7 @@ router.route('/request')
 		    	request.connId    = req.query.connId;
 		    	request.timeout   = req.query.timeout;
 		    	request.active    = true;
-		    	request.createdAt = new Date
-		    	console.log(request.createdAt);
+		    	request.createdAt = new Date;
 
 		    	request.save(function(err) {	// insert in to database
 		            if (err) {	
@@ -38,7 +37,16 @@ router.route('/request')
 		        });
 
 		        setTimeout(function() {
-		        	res.json({status:"OK"});
+		        	Request.find({
+		        		connId: req.query.connId,
+		        		active: true
+		        	}, function(err, rec) {
+		        		if (rec.length == 1) {	// if the connection hasn't been killed
+		        			res.json({status:"OK"});
+		        		} else {
+		        			res.json({status:"Killed prematurely."})
+		        		}
+		        	});
 		        }, req.query.timeout * 1000);
     		} else {
     			res.json({status: "Connection Id already exists " + req.query.connId});
